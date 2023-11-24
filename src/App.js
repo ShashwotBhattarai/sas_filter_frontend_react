@@ -1,6 +1,6 @@
-// FilterComponent.js
-import React, { useState } from "react";
 
+import React, { useState } from "react";
+import "./App.css"
 const FilterComponent = () => {
 	const [queries, setQueries] = useState([{ condition: "", operator: "", value: "" }]);
 	const [logic, setLogic] = useState("or");
@@ -53,7 +53,7 @@ const FilterComponent = () => {
 		<div>
 			<h2>Filter Component</h2>
 			{queries.map((query, index) => (
-				<div key={index}>
+				<div id="inputdiv" key={index}>
 					<label>Condition:</label>
 					<input
 						type="text"
