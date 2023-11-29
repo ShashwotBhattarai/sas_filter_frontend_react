@@ -1,6 +1,26 @@
 import React, { useState } from "react";
 import "./App.css";
 
+const operators = {
+	title: ["is equal to", "is not equal to", "starts with", "ends with", "contains", "does not contain"],
+	product_type: ["is equal to", "is not equal to", "starts with", "ends with", "contains", "does not contain"],
+	// product_category: ["is equal to"],
+	vendor: ["is equal to", "is not equal to", "starts with", "ends with", "contains", "does not contain"],
+	tags: ["is equal to"],
+	price: ["is equal to", "is not equal to", "is greater than", "is less than"],
+	compare_at_price: [
+		"is equal to",
+		"is not equal to",
+		"is greater than",
+		"is less than",
+		"is not empty",
+		"is empty",
+	],
+	weight: ["is equal to", "is not equal to", "is greater than", "is less than"],
+	inventory_stock: ["is equal to", "is greater than", "is less than"],
+	variants_title: ["is equal to", "is not equal to", "starts with", "ends with", "contains", "does not contain"],
+};
+
 const FilterComponent = () => {
 	const [queries, setQueries] = useState([{ condition: "", operator: "", value: "" }]);
 	const [logic, setLogic] = useState("or");
@@ -24,6 +44,10 @@ const FilterComponent = () => {
 
 	const handleLogicChange = (newLogic) => {
 		setLogic(newLogic);
+	};
+
+	const getOperatorOptions = (condition) => {
+		return operators[condition] || [];
 	};
 
 	const handleSearch = async () => {
@@ -60,15 +84,11 @@ const FilterComponent = () => {
 						onChange={(e) => handleQueryChange(index, "condition", e.target.value)}
 					>
 						<option value="">Select Operator</option>
-						<option value="title">Title</option>
-						<option value="product_type">Product Type</option>
-						<option value="vendor">Vendor</option>
-						<option value="tags">Tags</option>
-						<option value="price">Price</option>
-						<option value="compare_at_price">Compare at Price</option>
-						<option value="weight">Weight</option>
-						<option value="inventory_stock">Inventory Stock</option>
-						<option value="variants_title">Variants Title</option>
+						{Object.keys(operators).map((condition) => (
+							<option key={condition} value={condition}>
+								{condition}
+							</option>
+						))}
 					</select>
 
 					<label>Operator:</label>
@@ -77,16 +97,11 @@ const FilterComponent = () => {
 						onChange={(e) => handleQueryChange(index, "operator", e.target.value)}
 					>
 						<option value="">Select Operator</option>
-						<option value="is equal to">Is Equal To</option>
-						<option value="is not equal to">Is Not Equal To</option>
-						<option value="starts with">Starts With</option>
-						<option value="ends with">Ends With</option>
-						<option value="contains">Contains</option>
-						<option value="does not contain">Does Not Contain</option>
-						<option value="is greater than">Is Greater Than</option>
-						<option value="is less than">Is Less Than</option>
-						<option value="is not empty">Is Not Empty</option>
-						<option value="is empty">Is Empty</option>
+						{getOperatorOptions(query.condition).map((operator) => (
+							<option key={operator} value={operator}>
+								{operator}
+							</option>
+						))}
 					</select>
 
 					<label>Value:</label>
