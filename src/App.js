@@ -52,7 +52,7 @@ const FilterComponent = () => {
 
 	const handleSearch = async () => {
 		try {
-			const response = await fetch("https://sas-filter.onrender.com/filter", {
+			const response = await fetch(process.env.REACT_APP_FILTER_BACKEND, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
