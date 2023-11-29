@@ -52,7 +52,7 @@ const FilterComponent = () => {
 
 	const handleSearch = async () => {
 		try {
-			const response = await fetch("http://localhost:3000/filter", {
+			const response = await fetch(process.env.FILTER_BACKEND_URL, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
