@@ -52,16 +52,13 @@ const FilterComponent = () => {
 
 	const handleSearch = async () => {
 		try {
-			const response = await fetch(
-				"https://vercel.com/shashwot-bhattarais-projects/sas-filter/G7XUuPHeDvze5ANfgKXLj1iWg3f8/filter",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({ queries, logic }),
-				}
-			);
+			const response = await fetch("https://sas-filter.onrender.com/filter", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ queries, logic }),
+			});
 
 			if (!response.ok) {
 				throw new Error("Failed to fetch data");
