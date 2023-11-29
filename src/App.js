@@ -59,6 +59,7 @@ const FilterComponent = () => {
 						value={query.condition}
 						onChange={(e) => handleQueryChange(index, "condition", e.target.value)}
 					>
+						<option value="">Select Operator</option>
 						<option value="title">Title</option>
 						<option value="product_type">Product Type</option>
 						<option value="vendor">Vendor</option>
@@ -75,6 +76,7 @@ const FilterComponent = () => {
 						value={query.operator}
 						onChange={(e) => handleQueryChange(index, "operator", e.target.value)}
 					>
+						<option value="">Select Operator</option>
 						<option value="is equal to">Is Equal To</option>
 						<option value="is not equal to">Is Not Equal To</option>
 						<option value="starts with">Starts With</option>
