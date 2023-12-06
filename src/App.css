@@ -1,4 +1,4 @@
-/* Apply styles to the entire component container */
+/* Apply styles to the entire component container
 div {
 	font-family: Arial, sans-serif;
 	margin: 20px;
@@ -90,4 +90,4 @@ pre {
 	border: 1px solid #ddd;
 	border-radius: 3px;
 	overflow-x: auto;
-}
+} 
